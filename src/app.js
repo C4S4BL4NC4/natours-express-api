@@ -26,6 +26,11 @@ app.get('/api/v1/tours', (req, res) => {
   });
 });
 
+app.get('/api/v1/tours/:id:swag:reg', (req, res) => {
+  console.log(req.params);
+  res.end('done');
+});
+
 app.post('/api/v1/tours', (req, res) => {
   const newId = tours[tours.length - 1].id + 1;
   const newTour = Object.assign({ id: newId }, req.body);
@@ -44,8 +49,6 @@ app.post('/api/v1/tours', (req, res) => {
       });
     }
   );
-
-  res.send('Done');
 });
 
 const port = 3000;

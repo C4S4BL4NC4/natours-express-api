@@ -29,27 +29,4 @@ app.listen(port, () => {
 ```
 
 
-#### Get request: 
-Sending a get request in express is 
-```JavaScript
-app.get('theRoute', (req, req) => { 
-res.status.(200).json()
-}
-```
-We can declare the route on the fly but most of the time be` 'api/v1/something'` best practice.
 
-#### Post request:
-Sending a ==POST== request.
-```JavaScript
-app.use(express.json()); // Middle ware
-...
-...
-...
-app.post('/api/v1/tours', (req, res) => {
-  console.log(req.body); // Client req content is saved here.
-  res.send('Done');
-});
-```
-You can't access the `req` directly we need something called a middleware to do that in the codebase above declare `app.use(express.json());` it simply add the data to the body of the request, otherwise, it would `undefined`.
-
-`status: 201` means created
