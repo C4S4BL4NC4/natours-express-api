@@ -13,12 +13,22 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "nodeJS/Express/Responding to URL parameters.md",
+                "file": "nodeJS/Express/CRUD OPs - Delete Request.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Responding to URL parameters"
+              "title": "CRUD OPs - Delete Request"
+            }
+          },
+          {
+            "id": "85fe1b119cddc33d",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -171,7 +181,9 @@
   },
   "active": "18e3d462c9a8503b",
   "lastOpenFiles": [
-    "nodeJS/Express/Get and Post Requests.md",
+    "nodeJS/Express/CRUD OPs - PUT and PATCH.md",
+    "nodeJS/Express/CRUD OPs - Delete Request.md",
+    "nodeJS/Express/CRUD OPs - Get and Post Requests.md",
     "nodeJS/Express/Responding to URL parameters.md",
     "nodeJS/Express/Express Framework.md"
   ]
