@@ -17,3 +17,5 @@ app.delete('/api/v1/tours/:id', (req, res) => {
   });
 });
 ```
+
+status code `500` internal server error.
