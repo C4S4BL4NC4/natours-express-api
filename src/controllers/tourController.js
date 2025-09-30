@@ -15,6 +15,7 @@ exports.getAllTours = (req, res) => {
 };
 
 exports.getTourById = (req, res) => {
+  console.log('Tour by ID request.');
   const id = +req.params.id;
   const tour = tours.find((el) => el.id === id);
 
@@ -27,6 +28,7 @@ exports.getTourById = (req, res) => {
 };
 
 exports.updateTour = (req, res) => {
+  console.log('Patch request.');
   res.status(200).json({
     status: 'success',
     data: {
@@ -36,6 +38,7 @@ exports.updateTour = (req, res) => {
 };
 
 exports.deleteTour = (req, res) => {
+  console.log('Delete request.');
   res.status(204).json({
     // 204 for deleted.
     status: 'success',
@@ -44,6 +47,7 @@ exports.deleteTour = (req, res) => {
 };
 
 exports.createTour = (req, res) => {
+  console.log('POST request.');
   const newId = tours[tours.length - 1].id + 1;
   const newTour = Object.assign({ id: newId }, req.body);
   tours.push(newTour);
@@ -65,14 +69,28 @@ exports.createTour = (req, res) => {
 };
 
 exports.checkID = (req, res, next, val) => {
-  if (val * 1 > tours.length) {
+  if (req.params.id * 1 > tours.length) {
     console.log(`Invalid ID recieved: ${val}`);
     return res.status(404).json({
       status: 'fail',
       message: 'Invalid ID.',
     });
-
-    console.log(`Recieved ID is: ${val}`);
-    next();
   }
+  console.log(`Valid ID recieved: ${val}`);
+  next();
 };
+// Create checkBody middleware function
+
+exports.checkBody = (req, res, next, val) => {
+  if (!req.body.name || !req.body.price) {
+    return res.status(400).json({
+      status: 'fail',
+      message: 'Missing Name Or Price',
+    });
+  }
+  next();
+};
+// Check if body contains the name property and price property.
+// If not, send back 400 (bad request)
+
+// Add it to the post handler stack
