@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "nodeJS/MongoDB/MongoDB.md",
+                "file": "nodeJS/MongoDB/Mongoose.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MongoDB"
+              "title": "Mongoose"
             }
           }
         ]
@@ -172,6 +172,7 @@
   "active": "c925865e8ace62d9",
   "lastOpenFiles": [
     "nodeJS/MongoDB/MongoDB.md",
+    "nodeJS/MongoDB/Mongoose.md",
     "nodeJS/MongoDB",
     "nodeJS/Express/ESLINT.md",
     "nodeJS/TypeScript.md",
