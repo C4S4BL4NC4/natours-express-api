@@ -11,10 +11,14 @@
             "id": "c925865e8ace62d9",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "nodeJS/MongoDB/MongoDB.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "MongoDB"
             }
           }
         ]
@@ -167,6 +171,8 @@
   },
   "active": "c925865e8ace62d9",
   "lastOpenFiles": [
+    "nodeJS/MongoDB/MongoDB.md",
+    "nodeJS/MongoDB",
     "nodeJS/Express/ESLINT.md",
     "nodeJS/TypeScript.md",
     "nodeJS/Express/Middleware and Response Cycle.md",
