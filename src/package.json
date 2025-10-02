@@ -4,15 +4,15 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start:dev": "nodemon server.js",
-    "start:prod": "SET NODE_ENV=production & nodemon server.js",
-    "start": "node server.js"
+    "start": "nodemon server.js",
+    "start:prod": "SET NODE_ENV=production & nodemon server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^4.21.2",
+    "mongoose": "^6.13.8",
     "morgan": "^1.10.1"
   },
   "devDependencies": {
