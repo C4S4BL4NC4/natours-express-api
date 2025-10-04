@@ -76,7 +76,7 @@ const Tour = mongoose.model('Tour', tourSchema);
 
 mongoose
   .connect(
-    'mongodb+srv://mrdroyd:LGpQnGFGICTVItJ4@cluster0.bd3mhki.mongodb.net/',
+    'mongodb+srv://mrdroyd:dT9z3Ecsvwat0P5e@cluster0.bd3mhki.mongodb.net/',
   )
   .then(() => console.log('DB connection successful'));
 
