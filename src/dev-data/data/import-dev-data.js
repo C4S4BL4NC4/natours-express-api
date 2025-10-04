@@ -76,18 +76,9 @@ const Tour = mongoose.model('Tour', tourSchema);
 
 mongoose
   .connect(
-    'mongodb+srv://mrdroyd:dT9z3Ecsvwat0P5e@cluster0.bd3mhki.mongodb.net/',
+    'mongodb+srv://<USERNAME>:<PASSWORD>@<CLUSTERNAME>.<CODE>.mongodb.net/natours',
   )
   .then(() => console.log('DB connection successful'));
-
-// const app = require('../../app');
-
-// // console.log(app.get('env'));
-// // console.log(process.env);
-// const port = process.env.PORT || 8000;
-// app.listen(port, () => {
-//   console.log(`Running on PORT: 127.0.0.1:${port}\n`);
-// });
 
 const createTour = async (tour) => {
   try {
@@ -97,4 +88,6 @@ const createTour = async (tour) => {
   }
 };
 
-createTour(parsedToursNoId[1]);
+for (let i = 0; i < parsedToursNoId.length; i++) {
+  createTour(parsedToursNoId[i]);
+}
