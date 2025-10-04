@@ -1,4 +1,12 @@
 const mongoose = require('mongoose');
+const fs = require('fs');
+
+const parsedToursNoId = JSON.parse(
+  fs.readFileSync('./tours-simple.json', 'utf-8'),
+).map((tour) => {
+  const { id, ...newTour } = tour;
+  return newTour;
+});
 
 const tourSchema = new mongoose.Schema({
   name: {
@@ -66,4 +74,27 @@ const tourSchema = new mongoose.Schema({
 // To make a model
 const Tour = mongoose.model('Tour', tourSchema);
 
-module.exports = Tour;
+mongoose
+  .connect(
+    'mongodb+srv://mrdroyd:LGpQnGFGICTVItJ4@cluster0.bd3mhki.mongodb.net/',
+  )
+  .then(() => console.log('DB connection successful'));
+
+// const app = require('../../app');
+
+// // console.log(app.get('env'));
+// // console.log(process.env);
+// const port = process.env.PORT || 8000;
+// app.listen(port, () => {
+//   console.log(`Running on PORT: 127.0.0.1:${port}\n`);
+// });
+
+const createTour = async (tour) => {
+  try {
+    await Tour.create(tour);
+  } catch (err) {
+    console.error(`ERROR 💥: ${err}`);
+  }
+};
+
+createTour(parsedToursNoId[1]);

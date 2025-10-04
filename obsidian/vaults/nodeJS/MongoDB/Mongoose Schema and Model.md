@@ -17,6 +17,10 @@ const tourSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'A tour must have a price'],
   },
+  summary: {
+    type: String,
+    trim: true, // Remove whitespace at the beginning and end of a String
+  },
 });
 // To make a model
 const Tour = mongoose.model('Tour', tourSchema);
@@ -53,6 +57,28 @@ testTour
   });
 ```
 
+### Mongoose Methods:
+refer to this https://mongoosejs.com/docs/queries.html
+##### `model.find()`:
+In #MongoDB use `model.find()` to find an element of certain traits in a database. Calling `.find()` alone without passing anything into it will return the entire database content as a promise that's must be awaited.
 ```JavaScript
-// CODE HERE
+await Tour.find()
+```
+
+#### `model.findById()`:
+
+used to find data that match an `id`. 
+```JavaScript
+await Tour.findById(req.params.id);
+// Tour.findOne({_id: req.params.id}) // Exactly the same
+```
+
+#### `model.findByIdAndUpdate`:
+
+```JavaScript
+// We also can pass options
+const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
+      new: true, // Returns the new document
+      runValidators: true, // Reruns the validators
+    });
 ```
