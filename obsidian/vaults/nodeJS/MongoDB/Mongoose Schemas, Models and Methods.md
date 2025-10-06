@@ -61,6 +61,7 @@ testTour
 refer to this https://mongoosejs.com/docs/queries.html
 ##### `model.find()`:
 In #MongoDB use `model.find()` to find an element of certain traits in a database. Calling `.find()` alone without passing anything into it will return the entire database content as a promise that's must be awaited.
+It is also a part of the `Query Class`
 ```JavaScript
 await Tour.find()
 ```
