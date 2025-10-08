@@ -5,7 +5,7 @@ an example of a query is done `127.0.0.1:3000/api/v1/tours?duration=5&difficulty
 req.query
 ```
 
-#### The Two Ways of Implementing queries:
+#### The Two Ways of Implementing queries
 
 1. MongoDB Methods:
 ```JavaScript
@@ -25,17 +25,52 @@ const tours = await Tour.find().where('duration').equals(5).where('difficutly').
 ```
 
 
-# Advanced Filtering:
+# Advanced Filtering
 
 Now, we want to implement the greater than, less than, less or equal, etc.. and to do that we must write the query in a standardized way `127.0.0.1:3000/api/v1/tours?duration[gte]=5&difficulty=easy&sort=1&limit=10`
 `$gte` (Greater Than Or Equal) A #MongoDB operator that means `>=5`. The expected query object from `req.query` is supposed to look like `{difficulty: 'easy', duration: {$gte: 5} }`. However, the object we receive is `{difficulty: 'easy', duration: {gte: 5} }` to fix it:
 
 ```JavaScript
 // 1) Stringify the Object
-const queryStr = JSON.stringify(queryObj);
+let queryStr = JSON.stringify(queryObj);
 
-// 2) Replace
-queryStr.replace(/\b(gte|gt|lte|lt)\b/)
+// 2) Replace take callback function of a match
+queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/, match => `$${match}`);
+
+// 3) Reparse it to get a modified query
+ const query = Tour.find(JSON.parse(queryStr));
 
 ```
 
+## MongoDB Query Operators
+
+There are many query operators that can be used to compare and reference document fields.
+
+### Comparison
+
+The following operators can be used in queries to compare values:
+
+- `$eq`: Values are equal
+- `$ne`: Values are not equal
+- `$gt`: Value is greater than another value
+- `$gte`: Value is greater than or equal to another value
+- `$lt`: Value is less than another value
+- `$lte`: Value is less than or equal to another value
+- `$in`: Value is matched within an array
+
+### Logical
+
+The following operators can logically compare multiple queries.
+
+- `$and`: Returns documents where both queries match
+- `$or`: Returns documents where either query matches
+- `$nor`: Returns documents where both queries fail to match
+- `$not`: Returns documents where the query does not match
+
+### Evaluation
+
+The following operators assist in evaluating documents.
+
+- `$regex`: Allows the use of regular expressions when evaluating field values
+- `$text`: Performs a text search
+- `$where`: Uses a JavaScript expression to match documents
