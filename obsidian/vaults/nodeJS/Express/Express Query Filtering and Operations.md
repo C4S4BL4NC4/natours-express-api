@@ -25,7 +25,7 @@ const tours = await Tour.find().where('duration').equals(5).where('difficutly').
 ```
 
 
-# Advanced Filtering
+## Advanced Filtering
 
 Now, we want to implement the greater than, less than, less or equal, etc.. and to do that we must write the query in a standardized way `127.0.0.1:3000/api/v1/tours?duration[gte]=5&difficulty=easy&sort=1&limit=10`
 `$gte` (Greater Than Or Equal) A #MongoDB operator that means `>=5`. The expected query object from `req.query` is supposed to look like `{difficulty: 'easy', duration: {$gte: 5} }`. However, the object we receive is `{difficulty: 'easy', duration: {gte: 5} }` to fix it:
@@ -74,3 +74,39 @@ The following operators assist in evaluating documents.
 - `$regex`: Allows the use of regular expressions when evaluating field values
 - `$text`: Performs a text search
 - `$where`: Uses a JavaScript expression to match documents
+
+
+
+## Query Sorting
+
+
+### Singular Criteria Sorting
+
+Soring is a #mongoose method chain on a query object `query.sort()` then passing a query into it `req.query.valKey`.
+`127.0.0.1:3000/api/v1/tours?sort=price` `req.query.sort` in our case.
+The sign or the absence of a sign for `price` determines ascension. Passing a `?sort=-price` result in a descending sort.
+
+```JavaScript
+// Ascending Order
+let query = Tour.find(JSON.parse(queryStr));
+    // Sorting
+    if (req.query.sort) {
+      query = query.sort(req.query.sort);
+    }
+```
+
+
+### Multiple Criteria Sorting
+
+Just like a singular sorting it is done by passing a query link that looks like this `127.0.0.1:3000/api/v1/tours?sort=price,ratingsAverage`
+
+```JavaScript
+if (req.query.sort) {
+      const sortBy = req.query.sort.split(',').join(' ');
+      query = query.sort(sortBy);
+    } else {
+    query = query.sort('-createdAt');
+    }
+```
+
+

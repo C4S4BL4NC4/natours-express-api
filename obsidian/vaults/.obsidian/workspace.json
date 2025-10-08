@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "nodeJS/Express/Express Query Filtering.md",
+                "file": "nodeJS/Express/Express Query Filtering and Operations.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Express Query Filtering"
+              "title": "Express Query Filtering and Operations"
             }
           }
         ],
@@ -198,11 +198,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "d069b35c6663faea",
+  "active": "0a94b03eef7e6172",
   "lastOpenFiles": [
     "nodeJS/MongoDB/Mongoose Schemas, Models and Methods.md",
     "nodeJS/Node.js/Regular Expressions RegEx.md",
-    "nodeJS/Express/Express Query Filtering.md",
+    "nodeJS/Express/Express Query Filtering and Operations.md",
     "nodeJS/Node.js/Useful Tricks.md",
     "nodeJS/MongoDB/Mongoose.md",
     "MVC/MVC Architecture in our express app.md",
