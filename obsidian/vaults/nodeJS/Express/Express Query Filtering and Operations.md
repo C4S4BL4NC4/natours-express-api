@@ -98,7 +98,7 @@ let query = Tour.find(JSON.parse(queryStr));
 
 ### Multiple Criteria Sorting
 
-Just like a singular sorting it is done by passing a query link that looks like this `127.0.0.1:3000/api/v1/tours?sort=price,ratingsAverage`
+Just like a singular sorting it is done by passing a query link that looks like this `server/api/v1/tours?sort=price,ratingsAverage`
 
 ```JavaScript
 if (req.query.sort) {
@@ -109,4 +109,18 @@ if (req.query.sort) {
     }
 ```
 
+
+### Field Limiting
+
+A query of `server/api/v1/tours?fields=name,price`
+expected to return a field of `name` and `price` excluded. To implement it we use `query.select()` passing to the name 
+```JavaScript
+// Field Limiting
+if (req.query.fields) {
+const fields = req.query.fields.split(',').join(' ');
+query = query.select(fields);
+} else {
+query = query.select('-__v');
+}
+```
 
