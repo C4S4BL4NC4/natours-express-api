@@ -5,6 +5,7 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 
 const app = express();
+
 // Global Middleware
 app.use(express.json()); // Body Parser
 app.use('/api/v1/tours', tourRouter); // Router
