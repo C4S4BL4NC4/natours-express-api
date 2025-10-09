@@ -9,7 +9,7 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD,
 );
 
-mongoose.connect(DB).then(() => console.log('DB connection successful'));
+mongoose.connect(DB).then(() => console.log('=> Connected to Database.'));
 
 const app = require('./app');
 
@@ -18,6 +18,7 @@ const app = require('./app');
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(
-    `Running on PORT: 127.0.0.1:${port}\nNODE_ENV = ${process.env.NODE_ENV}`,
+    `Running on port: 127.0.0.1:${port}\nNODE_ENV = ${process.env.NODE_ENV}`,
   );
+  console.log('=> Connecting...');
 });

@@ -13,34 +13,6 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "nodeJS/MongoDB/Mongoose Schemas, Models and Methods.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Mongoose Schemas, Models and Methods"
-            }
-          },
-          {
-            "id": "427131d79b38595b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "nodeJS/Node.js/Regular Expressions RegEx.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Regular Expressions RegEx"
-            }
-          },
-          {
-            "id": "d069b35c6663faea",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "nodeJS/Express/Express Query Filtering and Operations.md",
                 "mode": "source",
                 "source": false
@@ -48,9 +20,18 @@
               "icon": "lucide-file",
               "title": "Express Query Filtering and Operations"
             }
+          },
+          {
+            "id": "d069b35c6663faea",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -198,10 +179,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "0a94b03eef7e6172",
+  "active": "637b4a898cc04f9b",
   "lastOpenFiles": [
     "nodeJS/MongoDB/Mongoose Schemas, Models and Methods.md",
     "nodeJS/Node.js/Regular Expressions RegEx.md",
+    "nodeJS/Express/ESLINT.md",
     "nodeJS/Express/Express Query Filtering and Operations.md",
     "nodeJS/Node.js/Useful Tricks.md",
     "nodeJS/MongoDB/Mongoose.md",
@@ -213,7 +195,6 @@
     "nodeJS/Node.js",
     "nodeJS/MongoDB/MongoDB.md",
     "nodeJS/MongoDB",
-    "nodeJS/Express/ESLINT.md",
     "nodeJS/Node.js/TypeScript.md",
     "nodeJS/Express/Middleware and Response Cycle.md",
     "nodeJS/Express/Environment Variables.md",

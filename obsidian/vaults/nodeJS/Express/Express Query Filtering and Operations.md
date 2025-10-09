@@ -77,10 +77,9 @@ The following operators assist in evaluating documents.
 
 
 
-## Query Sorting
+### Query Sorting
 
-
-### Singular Criteria Sorting
+#### Singular Criteria Sorting
 
 Soring is a #mongoose method chain on a query object `query.sort()` then passing a query into it `req.query.valKey`.
 `127.0.0.1:3000/api/v1/tours?sort=price` `req.query.sort` in our case.
@@ -96,7 +95,7 @@ let query = Tour.find(JSON.parse(queryStr));
 ```
 
 
-### Multiple Criteria Sorting
+#### Multiple Criteria Sorting
 
 Just like a singular sorting it is done by passing a query link that looks like this `server/api/v1/tours?sort=price,ratingsAverage`
 
@@ -113,7 +112,8 @@ if (req.query.sort) {
 ### Field Limiting
 
 A query of `server/api/v1/tours?fields=name,price`
-expected to return a field of `name` and `price` excluded. To implement it we use `query.select()` passing to the name 
+expected to return a field of `name` and `price` excluded. To implement it we use `query.select()` passing to a string of the `fields` you wanna exclude.
+
 ```JavaScript
 // Field Limiting
 if (req.query.fields) {
@@ -124,3 +124,33 @@ query = query.select('-__v');
 }
 ```
 
+We also can hide fields from the `schema` permanently like passwords and other sensitive information.
+
+```JavaScript
+// Passing select: false
+difficulty: {
+    type: String,
+	select: false,
+    required: [true, 'A tour must have a difficulty.'],
+  },
+```
+
+
+
+
+### Pagination 
+
+`server/api/v1/tours?page=1&limit=3` Page navigation is implemented with the functions `.skip()` and `.limit()` passing a different numbers for both functions.
+
+```JavaScript
+// Pagination
+    const page = req.query.page * 1 || 1;
+    const limit = req.query.limit * 1 || 100;
+    const skip = (page - 1) * limit;
+    query = query.skip(skip).limit(limit);
+    
+    if (req.query.page) {
+      const numTours = await Tour.countDocuments();
+  if (skip >= numTours) throw Error('This page does not exist');
+    }
+```
