@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "nodeJS/MongoDB/Mongoose Data Validators.md",
+                "file": "nodeJS/Express/Express Error Handling.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Mongoose Data Validators"
+              "title": "Express Error Handling"
             }
           }
         ]
@@ -171,8 +171,12 @@
   },
   "active": "ecb4782dbf7452e3",
   "lastOpenFiles": [
-    "nodeJS/MongoDB/Mongoose Middleware.md",
+    "nodeJS/Express/imgs/errorHandling.png",
+    "nodeJS/Express/Express Error Handling.md",
+    "nodeJS/Express/imgs",
+    "nodeJS/Express/Express Framework.md",
     "nodeJS/MongoDB/Mongoose Data Validators.md",
+    "nodeJS/MongoDB/Mongoose Middleware.md",
     "nodeJS/MongoDB/Mongoose.md",
     "nodeJS/MongoDB/Aggregation Pipeline.md",
     "nodeJS/MongoDB/MongoDB.md",
@@ -192,7 +196,6 @@
     "nodeJS/Express/Middleware and Response Cycle.md",
     "nodeJS/Express/Environment Variables.md",
     "nodeJS/Express/Serving Static Files.md",
-    "nodeJS/Express/Express Framework.md",
     "nodeJS/Express/Responding to URL parameters.md",
     "nodeJS/Node.js/Section1/Node.js.md",
     "nodeJS/Express/Creating and Mounting Routers.md",

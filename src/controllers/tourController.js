@@ -9,6 +9,12 @@ exports.aliasTopTours = (req, res, next) => {
   next();
 };
 
+const catchAync = (fn) => {
+  return (req, res, next) => {
+    fn(req, res, next).catch(next);
+  };
+};
+
 exports.getAllTours = async (req, res) => {
   try {
     // Execute Query
