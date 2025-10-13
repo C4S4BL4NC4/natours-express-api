@@ -1,8 +1,15 @@
 const express = require('express');
-const userController = require('./../controllers/userController');
+const userController = require('../controllers/userController');
+const authController = require('../controllers/authController');
+
 const router = express.Router();
 
-// ROUTES
+// Signup Route: Non-REST format philosophy.
+
+// Listening to the requests coming to this route
+router.post('/signup', authController.signup);
+
+// CRUD Routes: %100 REST format philosophy.
 router
   .route('/')
   .get(userController.getAllUsers)
