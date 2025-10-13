@@ -6,8 +6,8 @@ const router = express.Router();
 
 // Signup Route: Non-REST format philosophy.
 
-// Listening to the requests coming to this route
 router.post('/signup', authController.signup);
+router.post('/login', authController.login);
 
 // CRUD Routes: %100 REST format philosophy.
 router
