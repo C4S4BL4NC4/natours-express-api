@@ -11,14 +11,12 @@
             "id": "ecb4782dbf7452e3",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "nodeJS/Authentication/JSON Web Tokens.md",
-                "mode": "source",
-                "source": false
+                "file": "nodeJS/Authentication/imgs/Pasted image 20251013220807.png"
               },
-              "icon": "lucide-file",
-              "title": "JSON Web Tokens"
+              "icon": "lucide-image",
+              "title": "Pasted image 20251013220807"
             }
           }
         ]
@@ -169,11 +167,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "ecb4782dbf7452e3",
+  "active": "0a94b03eef7e6172",
   "lastOpenFiles": [
-    "nodeJS/Authentication/Authentication.md",
-    "Pasted image 20251013220807.png",
     "nodeJS/Authentication/JSON Web Tokens.md",
+    "nodeJS/Authentication/Authentication.md",
+    "nodeJS/Authentication/imgs/Pasted image 20251013220807.png",
     "nodeJS/Authentication/imgs/JWTVerify.png",
     "nodeJS/Authentication/imgs/JWTEncoding.png",
     "nodeJS/Authentication/imgs/JWTAuth.png",
