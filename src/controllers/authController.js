@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 const jwt = require('jsonwebtoken');
 const util = require('util');
 const User = require('../models/userModel');
@@ -76,17 +77,30 @@ exports.protect = catchAsync(async (req, res, next) => {
   );
 
   // 3) Check user existance
-  const freshUser = await User.findById(decoded.id);
-  if (!freshUser) {
+  const currentUser = await User.findById(decoded.id);
+  if (!currentUser) {
     return next(new AppError('The user of token no longer exist!', 401));
   }
 
   // 4) Check if user changed passowrd after token was issued
-  if (freshUser.passwordChangedAfter(decoded.iat)) {
+
+  if (currentUser.passwordChangedAfter(decoded.iat)) {
     return next(
       new AppError('User has changed their password! Please login again.', 401),
     );
   }
-  req.user = freshUser;
+  req.user = currentUser;
   next();
 });
+
+exports.restrictTo = (...roles) => {
+  return (req, res, next) => {
+    // Roles [admin, leadguide]
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError('You do not have permissions to do that action.', 403),
+      );
+    }
+    next();
+  };
+};

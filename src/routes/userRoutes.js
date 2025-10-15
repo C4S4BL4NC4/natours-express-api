@@ -5,7 +5,6 @@ const authController = require('../controllers/authController');
 const router = express.Router();
 
 // Signup Route: Non-REST format philosophy.
-
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
 
