@@ -1,10 +1,11 @@
 /* eslint-disable arrow-body-style */
 const jwt = require('jsonwebtoken');
 const util = require('util');
+const crypto = require('crypto');
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
-const sendEmail = require('../utils/email.js');
+const sendEmail = require('../utils/email');
 
 // eslint-disable-next-line arrow-body-style
 const signToken = async (id) => {
@@ -33,6 +34,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   });
 });
 
+// Login a user
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -106,6 +108,7 @@ exports.restrictTo = (...roles) => {
   };
 };
 
+// Forget password provide a valid email, recieve a resetToken
 exports.forgotPassword = catchAsync(async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
   if (!user)
@@ -116,7 +119,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
   const resetURL = `${req.protocol}://${req.get('host')}/api/v1/users/resetPassword/${resetToken}`;
 
-  const message = `Forgot your password? Submit a PATCH requires with your new password and passwordConfirm to: ${resetURL}.\nIf you didn't forget your password, please ignore this email!`;
+  const message = `Forgot your password? Submit a PATCH request with your new password and passwordConfirm to: ${resetURL}.\nIf you didn't forget your password, please ignore this email!`;
 
   try {
     await sendEmail({
@@ -137,4 +140,43 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   }
 });
 
-exports.resetPassword = catchAsync(async (req, res, next) => {});
+// Reseting password with a reset token
+exports.resetPassword = catchAsync(async (req, res, next) => {
+  // 1. get user based on token
+  const hashedToken = crypto
+    .createHash('sha256')
+    .update(req.params.token)
+    .digest('hex');
+  const user = await User.findOne({
+    passwordResetToken: hashedToken,
+    passwordResetExpires: { $gt: Date.now() },
+  });
+
+  // 2. check if token is valid and user exist and set password
+  if (!user) next(new AppError('Invalid or expired token!', 400));
+
+  // 3. update passwordChangedAt property
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  user.passwordResetToken = undefined;
+  user.passwordResetExpires = undefined;
+  user.save();
+
+  // 4. login user send jwt to clien
+  const token = await signToken(user._id);
+
+  res.status(200).json({
+    status: 'success',
+    token,
+  });
+});
+
+// Updating a passowrd for a current user.
+exports.updatePassword = (req, res, next) => {
+  // 1) Get user from collection.
+
+  const user = findOne({});
+  // 2) Check if POSTed password is correct.
+  // 3) If so, update the password to the new one.
+  // 4) Log in user and send jwt.
+};
