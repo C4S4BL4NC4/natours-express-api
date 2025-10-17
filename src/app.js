@@ -1,4 +1,6 @@
 const express = require('express');
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
 const morgan = require('morgan'); // Middleware lib
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -6,17 +8,32 @@ const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 
+// Limiting reqs from same ip
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests from this IP. Try again in an hour!',
+});
+
 const app = express();
 
 // Global Middleware
-app.use(express.json()); // Body Parser
+app.use(helmet());
+
+// Set Security HTTP
+app.use('/api', limiter);
+
+// Body Parser reading data from body into req.body
+app.use(express.json({ limit: '10kb' }));
 app.use('/api/v1/tours', tourRouter); // Router
 app.use('/api/v1/users', userRouter); // Router
 
-// console.log(`PROCCESS.env: ${process.env.NODE_ENV}`);
+// Development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev')); // dev, combined, common, short, tiny
 }
+
+// Serving static files
 app.use(express.static(`${__dirname}/public`));
 
 // Error Handling: Unhabdled urls

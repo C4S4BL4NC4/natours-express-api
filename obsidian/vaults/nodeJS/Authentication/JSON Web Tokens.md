@@ -2,6 +2,11 @@
 
 When a user logs into the server we generate a #JWT unique to that user then store it at Clients Machine as a cookie or in local storage and a String on the server.
 
+JWT works with 3 variables kept in mind:
+1. Encryption Algorithm
+2. The payload (data to be encrypted)
+3. ==Secret string== that is to be stored on the server.
+Then, a token is generated and one can specify tokens expiration date and some other options then that token is sent to client. And whenever a client wants to make any other request he sends his token back. The token is then compared to the ==secret string== validating it or rejecting it if it was tampered with, then figuring out what to do with that request eventually. 
 ### JWT Authentication
 ![[JWTAuth.png]]
 ### What JWT Looks like

@@ -14,6 +14,30 @@ const signToken = async (id) => {
   });
 };
 
+const createSendToken = async function (user, code, res) {
+  const token = await signToken(user._id);
+  const cookieOptions = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000,
+    ),
+    httpOnly: true,
+  };
+
+  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+  res.cookie('jwt', token, cookieOptions);
+
+  // Hide password that is a byproduct of user creation from the response user object (output).
+  user.password = undefined;
+
+  res.status(code).json({
+    status: 'success',
+    token,
+    data: {
+      user,
+    },
+  });
+};
+
 exports.signup = catchAsync(async (req, res, next) => {
   // Creating Database entry from request's body
   //const newUser = await User.create(req.body) RISK: EVERYONE CAN REGISTER AS AN ADMIN!!
@@ -24,14 +48,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     passwordConfirm: req.body.passwordConfirm,
   });
 
-  const token = await signToken(newUser._id);
-  res.status(201).json({
-    status: 'success',
-    token,
-    data: {
-      user: newUser,
-    },
-  });
+  createSendToken(newUser, 201, res);
 });
 
 // Login a user
@@ -51,13 +68,7 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!user || !correct) {
     return next(new AppError('Incorrect email or password', 401));
   }
-  const token = await signToken(user._id);
-  console.log(`=> ${user.name} has logged in.`);
-
-  res.status(200).json({
-    status: 'success',
-    token,
-  });
+  createSendToken(user, 200, res);
 });
 
 exports.protect = catchAsync(async (req, res, next) => {
@@ -163,20 +174,31 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   user.save();
 
   // 4. login user send jwt to clien
-  const token = await signToken(user._id);
 
-  res.status(200).json({
-    status: 'success',
-    token,
-  });
+  createSendToken(user, 200, res);
 });
 
 // Updating a passowrd for a current user.
-exports.updatePassword = (req, res, next) => {
+exports.updatePassword = catchAsync(async (req, res, next) => {
   // 1) Get user from collection.
 
-  const user = findOne({});
+  const user = await User.findById(req.user.id).select('+password');
+  const result = await user.correctPassword(
+    req.body.currentPassword,
+    user.password,
+  );
+  console.log(user, result);
+
   // 2) Check if POSTed password is correct.
+  if (!result) {
+    return next(new AppError('Your current password is wrong.', 401));
+  }
+
   // 3) If so, update the password to the new one.
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  await user.save();
+
   // 4) Log in user and send jwt.
-};
+  createSendToken(user, 200, res);
+});

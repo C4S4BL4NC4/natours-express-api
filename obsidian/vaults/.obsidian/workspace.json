@@ -11,12 +11,14 @@
             "id": "ecb4782dbf7452e3",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "nodeJS/Authentication/imgs/Pasted image 20251013220807.png"
+                "file": "nodeJS/Authentication/Cookies.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20251013220807"
+              "icon": "lucide-file",
+              "title": "Cookies"
             }
           }
         ]
@@ -167,11 +169,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "0a94b03eef7e6172",
+  "active": "ecb4782dbf7452e3",
   "lastOpenFiles": [
+    "nodeJS/Authentication/Security best practices.md",
+    "nodeJS/Authentication/Cookies.md",
     "nodeJS/Authentication/JSON Web Tokens.md",
-    "nodeJS/Authentication/Authentication.md",
     "nodeJS/Authentication/imgs/Pasted image 20251013220807.png",
+    "nodeJS/Authentication/Authentication.md",
     "nodeJS/Authentication/imgs/JWTVerify.png",
     "nodeJS/Authentication/imgs/JWTEncoding.png",
     "nodeJS/Authentication/imgs/JWTAuth.png",
@@ -206,7 +210,6 @@
     "nodeJS/Node.js/Section1/Node.js.md",
     "nodeJS/Express/Creating and Mounting Routers.md",
     "nodeJS/Express/CRUD OPs - Delete Request.md",
-    "nodeJS/Express/Users Route.md",
-    "nodeJS/Express/CRUD OPs - PUT and PATCH.md"
+    "nodeJS/Express/Users Route.md"
   ]
 }
