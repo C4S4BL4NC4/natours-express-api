@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "nodeJS/Authentication/Cookies.md",
+                "file": "nodeJS/Data Modeling/Data Modeling.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Cookies"
+              "title": "Data Modeling"
             }
           }
         ]
@@ -171,8 +171,17 @@
   },
   "active": "ecb4782dbf7452e3",
   "lastOpenFiles": [
-    "nodeJS/Authentication/Security best practices.md",
+    "nodeJS/Data Modeling/imgs/summary.png",
+    "nodeJS/Data Modeling/Data Modeling.md",
+    "nodeJS/Data Modeling/imgs/refrencingVsEmbeddingKeyDiff.png",
+    "nodeJS/Data Modeling/imgs/typesOfRelationshipsBetweenData.png",
+    "nodeJS/Data Modeling/imgs/whenEmbedVsRefrence.png",
+    "nodeJS/Data Modeling/imgs/whatIsDataModeling.png",
+    "nodeJS/Data Modeling/imgs/typeOfRefrencing.png",
+    "nodeJS/Data Modeling/imgs",
     "nodeJS/Authentication/Cookies.md",
+    "nodeJS/Data Modeling",
+    "nodeJS/Authentication/Security best practices.md",
     "nodeJS/Authentication/JSON Web Tokens.md",
     "nodeJS/Authentication/imgs/Pasted image 20251013220807.png",
     "nodeJS/Authentication/Authentication.md",
@@ -182,7 +191,6 @@
     "nodeJS/Authentication/imgs",
     "nodeJS/Express/Express Error Handling.md",
     "nodeJS/Authentication",
-    "nodeJS/Express/imgs/errorHandling.png",
     "nodeJS/Express/imgs",
     "nodeJS/Express/Express Framework.md",
     "nodeJS/MongoDB/Mongoose Data Validators.md",
@@ -196,8 +204,6 @@
     "nodeJS/Express/ESLINT.md",
     "nodeJS/Node.js/Useful Tricks.md",
     "nodeJS/MVC/MVC Architecture in our express app.md",
-    "nodeJS/MVC/imgs/Pasted image 20251003054158.png",
-    "nodeJS/MVC/imgs/Pasted image 20251003053852.png",
     "nodeJS/MVC/imgs",
     "nodeJS/MVC",
     "nodeJS/Node.js",
@@ -208,8 +214,6 @@
     "nodeJS/Express/Serving Static Files.md",
     "nodeJS/Express/Responding to URL parameters.md",
     "nodeJS/Node.js/Section1/Node.js.md",
-    "nodeJS/Express/Creating and Mounting Routers.md",
-    "nodeJS/Express/CRUD OPs - Delete Request.md",
-    "nodeJS/Express/Users Route.md"
+    "nodeJS/Express/Creating and Mounting Routers.md"
   ]
 }
