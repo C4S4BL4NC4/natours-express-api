@@ -6,7 +6,17 @@ A process of taking unstructured data and structuring it into a structured and l
 
 
 
+#### Data... What?
+![[whatIsDataModeling.png]]
 
-![[whatIsDataModeling.png]]![[typesOfRelationshipsBetweenData.png]]![[refrencingVsEmbeddingKeyDiff.png]]
-![[whenEmbedVsRefrence.png]]![[typeOfRefrencing.png]]
+#### Types of relationships:
+![[typesOfRelationshipsBetweenData.png]]
+
+#### Referencing  vs. embedding
+![[refrencingVsEmbeddingKeyDiff.png]]
+#### When to embed or reference
+![[whenEmbedVsRefrence.png]]
+#### Types of referencing
+![[typeOfRefrencing.png]]
+#### Summary
 ![[summary.png]]
