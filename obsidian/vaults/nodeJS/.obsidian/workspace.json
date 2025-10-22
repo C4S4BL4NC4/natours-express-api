@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "1d1593bed93a60ac",
+        "id": "f05b820f36491ac3",
         "type": "tabs",
         "children": [
           {
-            "id": "6ff55257aec30cbf",
+            "id": "e601f2c07e9106d8",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -166,14 +166,17 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "6ff55257aec30cbf",
+  "active": "98ada4f062264319",
   "lastOpenFiles": [
+    "enw.md",
+    "Data Modeling/Data Modeling.md",
+    "Authentication/Authentication.md",
+    "Node.js/TypeScript.md",
     "Node.js/Section2 - Introduction to Node.js and NPM/fs.md",
     "Node.js/Useful Tricks.md",
     "Express/CRUD OPs - Get and Post Requests.md",
     "Express/Express Framework.md",
     "MongoDB/Mongoose Schemas, Models and Methods.md",
-    "Data Modeling/Data Modeling.md",
     "TypeScript.md",
     "Express/RestFUL API.md",
     "Section1/Useful.md",
@@ -199,9 +202,6 @@
     "Section2 - Introduction to Node.js and NPM/Exporting and Importing Modules.md",
     "Section2 - Introduction to Node.js and NPM/Node Farm.md",
     "Section1",
-    "Section 3.md",
-    "Section2 - Introduction to Node.js and NPM",
-    "Section 4.md",
-    "Section1/Node.js.md"
+    "Section2 - Introduction to Node.js and NPM"
   ]
 }
