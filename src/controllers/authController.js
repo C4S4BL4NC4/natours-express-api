@@ -16,14 +16,18 @@ const signToken = async (id) => {
 
 const createSendToken = async function (user, code, res) {
   const token = await signToken(user._id);
+
+  // bugfixed
+  const cookieDays = Number(process.env.JWT_COOKIE_EXPIRES_IN) || 90;
+  const cookieExpires = new Date(Date.now() + cookieDays * 24 * 60 * 60 * 1000);
+
   const cookieOptions = {
-    expires: new Date(
-      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000,
-    ),
+    expires: cookieExpires,
     httpOnly: true,
   };
 
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+
   res.cookie('jwt', token, cookieOptions);
 
   // Hide password that is a byproduct of user creation from the response user object (output).
