@@ -10,6 +10,7 @@ const globalErrorHandler = require('./controllers/errorController');
 
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
+const reviewRouter = require('./routes/reviewRoutes');
 
 // Limiting reqs from same ip
 const limiter = rateLimit({
@@ -48,8 +49,9 @@ app.use(
   }),
 );
 
-app.use('/api/v1/tours', tourRouter); // Router
-app.use('/api/v1/users', userRouter); // Router
+app.use('/api/v1/tours', tourRouter); // Tour Router
+app.use('/api/v1/users', userRouter); // User Router
+app.use('/api/v1/reviews', reviewRouter); // Review Router
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {

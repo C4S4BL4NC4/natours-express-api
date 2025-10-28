@@ -26,9 +26,9 @@ next();
 });
 ```
 
-#### Child Referencing in MongoDB
+#### Child and Parent Referencing in MongoDB
 
-Meaning in this case that `tours` and `users` will always be their separate documents and we will only keep the `id`s of the  of the tour guides in a `tour` document. And when we query the tour we get access to the tour guides without them being actually saved on the tour document.
+In this use case for the sake of an example we are using child referencing. Meaning, in this case that `tours` and `users` will always be their separate documents and we will only keep the `id`s of the  of the tour guides in a `tour` document. And when we query the tour we get access to the tour guides without them being actually saved on the tour document.
 
 ```JavaScript
 // in TourModel.js
@@ -47,3 +47,7 @@ select: '-__v -passwordChangedAt',
 ```
 
 **NOTE:  Behind the scenes `.populate()` is actually making an extra query so it might affect the performance.**
+
+
+#### Virtual Populate
+The question arises from how we did parent referencing for `review` with its parents `users` and `tours` how can we access reviews from `tours`? Since its the `child` that actually know about its `parent/s`. This is where virtual population come in hand.

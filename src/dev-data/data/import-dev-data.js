@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const dotenv = require('dotenv');
-const Tour = require('../../models/tourModel');
+const Review = require('../../models/reviewModel');
 
 const parsedToursNoId = JSON.parse(
-  fs.readFileSync('./tours.json', 'utf-8'),
+  fs.readFileSync('./reviews.json', 'utf-8'),
 ).map((tour) => {
   const { id, ...newTour } = tour;
   return newTour;
@@ -20,14 +20,14 @@ mongoose.connect(DB).then(() => {
   console.log('Connected...');
   for (let i = 0; i < parsedToursNoId.length; i++) {
     createTour(parsedToursNoId[i]);
-    console.log(`"${parsedToursNoId[i].name}" Tour was created`);
+    console.log(`"${parsedToursNoId[i].name}" was created`);
   }
   console.log('DONE!');
 });
 
 const createTour = async (tour) => {
   try {
-    await Tour.create(tour);
+    await Review.create(tour);
   } catch (err) {
     console.error(`ERROR 💥: ${err}`);
   }

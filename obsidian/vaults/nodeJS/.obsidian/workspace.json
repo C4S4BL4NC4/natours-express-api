@@ -170,11 +170,11 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "e601f2c07e9106d8",
+  "active": "98ada4f062264319",
   "lastOpenFiles": [
     "Data Modeling/Data Modeling.md",
-    "Data Modeling/imgs/NatoursDataModel.png",
     "Data Modeling/Natours Model.md",
+    "Data Modeling/imgs/NatoursDataModel.png",
     "enw.md",
     "Authentication/Authentication.md",
     "Node.js/TypeScript.md",
