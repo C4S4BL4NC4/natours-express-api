@@ -1,10 +1,13 @@
 const express = require('express');
 const tourController = require('../controllers/tourController');
 const authController = require('../controllers/authController');
+const reviewController = require('../controllers/reviewController');
+const reviewRouter = require('./reviewRoutes');
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
-// router.param('id', tourController.checkID);
+// Route back to reviewRouter for this nested link
+router.use('/:tourId/reviews', reviewRouter);
 
 // Router
 router.route('/stats').get(tourController.getTourStats);
@@ -21,12 +24,20 @@ router
 
 router
   .route('/:id')
-  .get(tourController.getTourById)
+  .get(tourController.getTour)
   .patch(tourController.updateTour)
   .delete(
     authController.protect,
     authController.restrictTo('admin', 'lead-guide'),
     tourController.deleteTour,
+  );
+
+router
+  .route('/:tourId/reviews')
+  .post(
+    authController.protect,
+    authController.restrictTo('user'),
+    reviewController.createReview,
   );
 
 module.exports = router;

@@ -127,10 +127,17 @@ const tourSchema = new mongoose.Schema(
   },
 );
 
-// Virtual Functions
+// Virtual Properties
 
 tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
+});
+
+// Populate
+tourSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'tour',
+  localField: '_id',
 });
 
 // Document Middleware / Schema Middleware

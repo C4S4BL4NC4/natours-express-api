@@ -1,11 +1,8 @@
-// make routes and controller for review
-// (1) get all review  (2) create a review endpoints
-// then create new reviews and retrieve them via endpoints
+const express = require('express');
 const reviewController = require('../controllers/reviewController');
 const authController = require('../controllers/authController');
-const express = require('express');
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router
   .route('/')
@@ -13,7 +10,14 @@ router
   .post(
     authController.protect,
     authController.restrictTo('user'),
+    reviewController.setTourUserIds,
     reviewController.createReview,
   );
+
+router
+  .route('/:id')
+  .patch(reviewController.updateReview)
+  .delete(reviewController.deleteReview)
+  .get(reviewController.getReview);
 
 module.exports = router;

@@ -51,3 +51,5 @@ select: '-__v -passwordChangedAt',
 
 #### Virtual Populate
 The question arises from how we did parent referencing for `review` with its parents `users` and `tours` how can we access reviews from `tours`? Since its the `child` that actually know about its `parent/s`. This is where virtual population come in hand.
+
+Virtual populate is basically a way to embed some information about the `tour` and its reviews without persisting it to the database and doing it magically via `foeginField` and `localField` keys.
