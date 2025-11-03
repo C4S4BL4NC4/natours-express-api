@@ -1,36 +1,52 @@
-const mongoose = require('mongoose');
 const fs = require('fs');
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const Tour = require('../../models/tourModel');
+const User = require('../../models/userModel');
 const Review = require('../../models/reviewModel');
 
-const parsedToursNoId = JSON.parse(
-  fs.readFileSync('./reviews.json', 'utf-8'),
-).map((tour) => {
-  const { id, ...newTour } = tour;
-  return newTour;
-});
-
-// To make a model
 dotenv.config({ path: '../../config.env', quiet: true });
+
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD,
 );
-mongoose.connect(DB).then(() => {
-  console.log('Connected...');
-  for (let i = 0; i < parsedToursNoId.length; i++) {
-    createTour(parsedToursNoId[i]);
-    console.log(`"${parsedToursNoId[i].name}" was created`);
-  }
-  console.log('DONE!');
-});
 
-const createTour = async (tour) => {
+mongoose.connect(DB).then(() => console.log('Connected to DB!'));
+
+console.log('Reading files...');
+const tours = JSON.parse(fs.readFileSync(`${__dirname}/tours.json`));
+const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`));
+const reviews = JSON.parse(fs.readFileSync(`${__dirname}/reviews.json`));
+
+const importData = async () => {
   try {
-    await Review.create(tour);
+    await Tour.create(tours);
+    console.log('Tours are uploaded!');
+    await User.create(users, { validateBeforeSave: false });
+    console.log('Users are uploaded!');
+    await Review.create(reviews);
+    console.log('Reviews are uploaded!');
   } catch (err) {
-    console.error(`ERROR 💥: ${err}`);
+    console.log(err);
   }
+  process.exit();
 };
 
-console.log('Connecting to DB...');
+const deleteData = async () => {
+  try {
+    await Tour.deleteMany();
+    await User.deleteMany();
+    await Review.deleteMany();
+    console.log('Data has been deleted!');
+  } catch (err) {
+    console.log(err);
+  }
+  process.exit();
+};
+
+if (process.argv[2] === '--i') {
+  importData();
+} else if (process.argv[2] === '--d') {
+  deleteData();
+}
