@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "88f122bfdc5c4ffb",
+        "id": "55c9ca98fa8bbb41",
         "type": "tabs",
         "children": [
           {
-            "id": "ecb4782dbf7452e3",
+            "id": "8c9ffb2c92bdf323",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "nodeJS/Data Modeling/Data Modeling.md",
+                "file": "nodeJS/MongoDB/Indexing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Data Modeling"
+              "title": "Indexing"
             }
           }
         ]
@@ -169,8 +169,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "ecb4782dbf7452e3",
+  "active": "8c9ffb2c92bdf323",
   "lastOpenFiles": [
+    "nodeJS/MongoDB/Indexing.md",
     "nodeJS/Data Modeling/imgs/summary.png",
     "nodeJS/Data Modeling/Data Modeling.md",
     "nodeJS/Data Modeling/imgs/refrencingVsEmbeddingKeyDiff.png",
