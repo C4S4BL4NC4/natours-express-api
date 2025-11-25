@@ -149,6 +149,6 @@ Free as in freedom, as in take fork it do whatever you want with it, its made fo
 
 - [Jonas Schmedtmann's Node.js Bootcamp](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/)
 - Unsplash for banner image
-- Shout out to [Obsidian](https://obsidian.md/) for being a great note taking tool. Make sure to check [my notes](https://github.com/C4S4BL4NC4/natours-express-api/tree/main/obsidian/vaults) too. 
+- Shout out to [Obsidian](https://obsidian.md/) for being a great note taking tool. Make sure to check [my notes](https://github.com/C4S4BL4NC4/natours-express-api/tree/main/obsidian/vaults) too!
 
-# NOTE: MY DOCUMENTATION WAS FULLY IMPLEMENTED WITH POSTMAN AND REFINED USING AI TOOLS.
+## NOTE: MY DOCUMENTATION WAS FULLY IMPLEMENTED WITH POSTMAN AND REFINED USING AI TOOLS.
