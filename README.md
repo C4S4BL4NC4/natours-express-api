@@ -22,7 +22,8 @@ A robust RESTful API for managing tours, users, reviews, and geospatial queries.
 ### Prerequisites
 
 - Node.js (v16+ recommended)
-- MongoDB Atlas cluster or local MongoDB
+- [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database) cluster or local MongoDB
+- [Mailtrap](https://mailtrap.io/) sandbox environment
 
 ### Installation
 
