@@ -132,6 +132,7 @@ const tourSchema = new mongoose.Schema(
 
 tourSchema.index({ price: 1, ratingsAverage: -1 });
 tourSchema.index({ slug: 1 });
+tourSchema.index({ startLocation: '2dsphere' });
 
 // Virtual Properties
 
@@ -179,18 +180,18 @@ tourSchema.pre(/^find/, function (next) {
   next();
 });
 
-tourSchema.post(/^find/, function (docs, next) {
-  console.log(`=> qRT: ${Date.now() - this.start}ms`);
-  next();
-});
+// tourSchema.post(/^find/, function (docs, next) {
+//   console.log(`=> qRT: ${Date.now() - this.start}ms`);
+//   next();
+// });
 
 // Aggregation Middleware
-tourSchema.pre('aggregate', function (next) {
-  this.pipeline().unshift({
-    $match: { secretTour: { $ne: true } },
-  });
-  next();
-});
+// tourSchema.pre('aggregate', function (next) {
+//   this.pipeline().unshift({
+//     $match: { secretTour: { $ne: true } },
+//   });
+//   next();
+// });
 
 // To make a model
 const Tour = mongoose.model('Tour', tourSchema);
