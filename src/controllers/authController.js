@@ -194,7 +194,6 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     req.body.currentPassword,
     user.password,
   );
-  console.log(user, result);
 
   // 2) Check if POSTed password is correct.
   if (!result) {
