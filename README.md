@@ -149,8 +149,4 @@ MIT
 - [Jonas Schmedtmann's Node.js Bootcamp](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/)
 - Unsplash for banner image
 
----
-
-## Contact
-
-For questions or support, open an issue or email: your.email@example.com
+NOTE: MY DOCUMENTATION WAS FULLY IMPLEMENTED WITH POSTMAN AND REFINED USING AI TOOLS.
