@@ -2,6 +2,7 @@
 
 
 #### Document Middleware
+
 Just like #express mongoose also has middleware function that are defined inside the schema file
 
 ```JavaScript
@@ -14,9 +15,10 @@ next();
 })
 
 // runs after all the prior middleware are ran through.
-tourSchema.post('save', function (doc, next) {
+// .post does not have access to next()
+tourSchema.post('save', function (doc) {
 // Body
-next();
+
 });
 
 ```

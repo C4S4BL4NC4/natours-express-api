@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const vldtr = require('validator');
-const User = require('./userModel');
 const Tour = require('./tourModel');
 
 const reviewSchema = new mongoose.Schema(
@@ -37,6 +36,9 @@ const reviewSchema = new mongoose.Schema(
   },
   { toJSON: { virtuals: true }, toObject: { virtuals: true } },
 );
+
+// Limiting a user to have one review per tour
+reviewSchema.index({ tour: 1, user: 1 }, { unique: true });
 
 reviewSchema.pre(/^find/, function (next) {
   // this.populate({ path: 'tour', select: 'name' }).populate({
@@ -84,7 +86,7 @@ reviewSchema.post('save', function () {
 });
 
 reviewSchema.pre(/^findOneAnd/, async function (next) {
-  this.r = await this.findOne();
+  this.r = await this.model.findOne(this.getQuery());
   next();
 });
 

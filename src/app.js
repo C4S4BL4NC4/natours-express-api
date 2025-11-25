@@ -5,6 +5,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const morgan = require('morgan'); // Middleware lib
+const cookieParser = require('cookie-parser');
+
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
@@ -29,6 +31,9 @@ app.use('/api', limiter);
 
 // Body Parser reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
+
+// Cookie parser, needed to read JWT from cookies
+app.use(cookieParser());
 
 // Data sanitization against NOSQL query injection and XSS Attacks
 app.use(mongoSanitize());

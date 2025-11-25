@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "nodeJS/MongoDB/Indexing.md",
+                "file": "nodeJS/MongoDB/Mongoose Middleware.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Indexing"
+              "title": "Mongoose Middleware"
             }
           }
         ]
