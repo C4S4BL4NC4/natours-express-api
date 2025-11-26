@@ -167,6 +167,7 @@
   },
   "active": "0a94b03eef7e6172",
   "lastOpenFiles": [
+    "Untitled.md",
     "123123.md",
     "nodeJS/Node.js/Section1/Useful.md",
     "nodeJS/MongoDB/Mongoose Data Validators.md",
@@ -210,7 +211,6 @@
     "nodeJS/Node.js/TypeScript.md",
     "nodeJS/Express/Middleware and Response Cycle.md",
     "nodeJS/Express/Environment Variables.md",
-    "nodeJS/Express/Serving Static Files.md",
-    "nodeJS/Express/Responding to URL parameters.md"
+    "nodeJS/Express/Serving Static Files.md"
   ]
 }
