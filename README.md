@@ -692,6 +692,7 @@ Free as in freedom—fork it, modify it, do whatever you want with it. It's made
 
 - [Jonas Schmedtmann's Node.js Bootcamp](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/) - The course that inspired this project
 - [Unsplash](https://unsplash.com/) - For the beautiful banner image
+- [Postman](https://www.postman.com/)
 - [Obsidian](https://obsidian.md/) - For being a great note-taking tool. Check out [my notes](https://github.com/C4S4BL4NC4/natours-express-api/tree/main/obsidian/vaults) too!
 
 ---
@@ -722,8 +723,7 @@ Authorization: Bearer <your_jwt_token>
 
 ## 📚 Additional Resources
 
-- [Postman Collection](link-to-postman-collection) - Import this collection to get started immediately
-- [API Documentation](link-to-docs) - Full interactive API documentation
+- [Postman Collection]([link-to-postman-collection](https://github.com/C4S4BL4NC4/natours-express-api/tree/main/src/dev-data/postman)) - Import this collection to get started immediately
 - [GitHub Repository](https://github.com/C4S4BL4NC4/natours-express-api) - Source code and additional notes
 
 ---
