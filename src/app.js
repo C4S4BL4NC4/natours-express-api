@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -13,6 +14,16 @@ const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
+const viewRouter = require('./routes/viewRoutes');
+
+const app = express();
+
+// View Engine
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
+// Serving static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Limiting reqs from same ip
 const limiter = rateLimit({
@@ -20,8 +31,6 @@ const limiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   message: 'Too many requests from this IP. Try again in an hour!',
 });
-
-const app = express();
 
 // Global Middleware
 app.use(helmet());
@@ -54,17 +63,16 @@ app.use(
   }),
 );
 
+// API Routes
 app.use('/api/v1/tours', tourRouter); // Tour Router
 app.use('/api/v1/users', userRouter); // User Router
 app.use('/api/v1/reviews', reviewRouter); // Review Router
+app.use('/', viewRouter);
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev')); // dev, combined, common, short, tiny
 }
-
-// Serving static files
-app.use(express.static(`${__dirname}/public`));
 
 // Error Handling: Unhabdled urls
 // Make sure to add it at the end of the middlewares.

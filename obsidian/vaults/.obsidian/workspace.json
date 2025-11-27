@@ -11,10 +11,14 @@
             "id": "8c9ffb2c92bdf323",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "nodeJS/Pug Templates/Writing pug.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Writing pug"
             }
           }
         ]
@@ -165,9 +169,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "0a94b03eef7e6172",
+  "active": "8c9ffb2c92bdf323",
   "lastOpenFiles": [
-    "Untitled.md",
+    "nodeJS/Pug Templates/Pug Templates.md",
+    "nodeJS/Pug Templates/Writing pug.md",
+    "Pug Templates.md",
+    "nodeJS/Pug Templates",
     "123123.md",
     "nodeJS/Node.js/Section1/Useful.md",
     "nodeJS/MongoDB/Mongoose Data Validators.md",
@@ -209,8 +216,6 @@
     "nodeJS/Node.js",
     "nodeJS/MongoDB",
     "nodeJS/Node.js/TypeScript.md",
-    "nodeJS/Express/Middleware and Response Cycle.md",
-    "nodeJS/Express/Environment Variables.md",
-    "nodeJS/Express/Serving Static Files.md"
+    "nodeJS/Express/Middleware and Response Cycle.md"
   ]
 }
