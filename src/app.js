@@ -33,6 +33,7 @@ const limiter = rateLimit({
 });
 
 // Global Middleware
+// FIXME: renable contentSecurityPoliciy and come up with a solution for leaflet lib maybe isntall it locally
 app.use(
   helmet({
     contentSecurityPolicy: false,

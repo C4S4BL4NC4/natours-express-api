@@ -84,9 +84,9 @@ exports.protect = catchAsync(async (req, res, next) => {
   ) {
     token = req.headers.authorization.split(' ')[1];
   }
-
-  // Allow token via cookie as well (when client stores JWT in cookie)
-  if (!token && req.cookies && req.cookies.jwt) token = req.cookies.jwt;
+  if (!token && req.cookies && req.cookies.jwt)
+    // Allow token via cookie as well (when client stores JWT in cookie)
+    token = req.cookies.jwt;
 
   if (!token) {
     return next(new AppError('You are not logged in', 401));
