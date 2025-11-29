@@ -33,7 +33,11 @@ const limiter = rateLimit({
 });
 
 // Global Middleware
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  }),
+);
 
 // Set Security HTTP
 app.use('/api', limiter);
