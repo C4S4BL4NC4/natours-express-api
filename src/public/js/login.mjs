@@ -1,4 +1,5 @@
 /* eslint-disable */
+import axios from 'https://cdnjs.cloudflare.com/ajax/libs/axios/1.10.0/esm/axios.js';
 
 const login = async (email, password) => {
   console.log(email, password);
