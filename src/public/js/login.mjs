@@ -2,7 +2,6 @@
 import axios from 'https://cdnjs.cloudflare.com/ajax/libs/axios/1.10.0/esm/axios.js';
 
 const login = async (email, password) => {
-  console.log(email, password);
   try {
     const res = await axios({
       method: 'POST',
@@ -13,9 +12,14 @@ const login = async (email, password) => {
       },
     });
 
-    console.log(res);
-  } catch {
-    console.log(err);
+    if (res.data.status === 'success') {
+      alert('Logged in successfully!');
+      window.setTimeout(() => {
+        location.assign('/');
+      }, 1500);
+    }
+  } catch (err) {
+    alert(err.response.data.message);
   }
 };
 

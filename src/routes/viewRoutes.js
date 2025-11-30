@@ -6,7 +6,10 @@ const router = express.Router();
 
 // Rendered Routes
 
+router.use(authController.isLoggedIn);
+
 router.get('/', viewsController.getOverview);
+
 router.get('/tour/:slug', authController.protect, viewsController.getTour);
 
 // Login
