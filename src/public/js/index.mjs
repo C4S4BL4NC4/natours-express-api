@@ -1,12 +1,13 @@
 /* eslint-disable */
 
-import { login } from './login.mjs';
+import { login, logout } from './login.mjs';
 import { displayMap } from './mapbox.mjs';
 
 const mapBox = document.getElementById('map');
 console.log(mapBox);
 const loginForm = document.querySelector('.form');
 console.log(loginForm);
+const logOutBtn = document.querySelector('.nav__el--logout');
 if (mapBox) {
   const locations = JSON.parse(mapBox.dataset.locations);
   displayMap(locations);
@@ -20,3 +21,5 @@ if (loginForm) {
     login(email, password);
   });
 }
+
+if (logOutBtn) logOutBtn.addEventListener('click', logout);
