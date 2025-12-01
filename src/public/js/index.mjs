@@ -3,7 +3,7 @@
 import { login } from './login.mjs';
 import { displayMap } from './mapbox.mjs';
 
-const mapBox = document.querySelector('.map');
+const mapBox = document.getElementById('map');
 console.log(mapBox);
 const loginForm = document.querySelector('.form');
 console.log(loginForm);
