@@ -28,21 +28,21 @@ function handleJWTExpiredError() {
 }
 
 const sendErrorDev = (err, req, res) => {
-  //API
+  // API
   if (req.originalUrl.startsWith('/api')) {
-    res.status(err.statusCode).json({
+    return res.status(err.statusCode).json({
       status: err.status,
       error: err,
       message: err.message,
       stack: err.stack,
     });
-  } else {
-    // Rendered website
-    res.status(err.statusCode).render('error', {
-      title: 'Something went wrong!',
-      msg: err.message,
-    });
   }
+  // Rendered website
+  // console.error('UNEXPECTED ERROR 💥', err.message);
+  return res.status(err.statusCode).render('error', {
+    title: 'Something went wrong!',
+    msg: err.message,
+  });
 };
 
 const sendErrorProd = (err, req, res) => {
@@ -62,23 +62,23 @@ const sendErrorProd = (err, req, res) => {
         message: 'Something went wrong',
       });
     }
-  } else {
-    // RENDERED SITE
-    // eslint-disable-next-line no-lonely-if
-    if (err.isOperational) {
-      res.status(err.statusCode).json({
-        status: err.status,
-        message: err.message,
-      });
-    } else {
-      // Programming or unknown error: don't leak details
-      // console.error('UNEXPECTED ERROR 💥', err);
-      res.status(500).json({
-        status: 'error',
-        message: 'Something went wrong',
-      });
-    }
   }
+
+  // RENDERED SITE
+
+  if (err.isOperational) {
+    return res.status(err.statusCode).render('error', {
+      title: 'Something went wrong!',
+      msg: err.message,
+    });
+  }
+  // Rencered website
+  // Programming or unknown error: don't leak details
+  // console.error('UNEXPECTED ERROR 💥', err);
+  return res.status(err.statusCode).render('error', {
+    title: 'Something went wrong!',
+    msg: 'Please try again later.',
+  });
 };
 
 module.exports = (err, req, res, next) => {
