@@ -33,7 +33,7 @@ const limiter = rateLimit({
 });
 
 // Global Middleware
-// FIXME: renable contentSecurityPoliciy and come up with a solution for leaflet lib maybe isntall it locally
+// FIXME: reenable contentSecurityPoliciy and come up with a solution for leaflet lib maybe isntall it locally
 app.use(
   helmet({
     contentSecurityPolicy: false,
@@ -45,6 +45,14 @@ app.use('/api', limiter);
 
 // Body Parser reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
+
+// Parse data coming from url encoded form
+// app.use(
+//   express.urlencoded({
+//     extended: true,
+//     limit: '10kb',
+//   }),
+// );
 
 // Cookie parser, needed to read JWT from cookies
 app.use(cookieParser());
