@@ -1,26 +1,69 @@
 const nodemailer = require('nodemailer');
+const pug = require('pug');
+const htmlToText = require('html-to-text');
 
-const sendEmail = async (options) => {
-  // 1. Create a transporter
-  const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
-    auth: {
-      user: process.env.EMAIL_USERNAME,
-      pass: process.env.EMAIL_PASSWORD,
-    },
-  });
+// new Email(user, url).sendWelcome();
+// .sendPasswordReset
 
-  // 2. Define the email options
-  const mailOptions = {
-    from: `Fiora <fiora@casanatours.info>`,
-    to: options.email,
-    subject: options.subject,
-    text: options.message,
-  };
+module.exports = class Email {
+  constructor(user, url) {
+    this.to = user.email;
+    this.firstName = user.name.split(' ')[0];
+    this.url = url;
+    this.from = `Fragile Express <${process.env.EMAIL_FROM}>`;
+  }
 
-  // 3. Actually send the email
-  await transporter.sendMail(mailOptions);
+  newTransport() {
+    if (process.env.NODE_ENV === 'production') {
+      // Sendgrid
+      // return nodemailer.createTransport({
+      //   service: 'SendGrid',
+      //   auth: {
+      //     user: process.env.SENDGRID_USERNAME,
+      //     pass: process.env.SENDGRID_PASSWORD,
+      //   },
+      // });
+    }
+
+    return nodemailer.createTransport({
+      host: process.env.EMAIL_HOST,
+      port: process.env.EMAIL_PORT,
+      auth: {
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
+  }
+
+  // Sending the actual email
+  async send(template, subject) {
+    // 1 Render HTML FOR EAMIL BASED ON PUG TEMPLATE
+    const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
+      firstName: this.firstName,
+      url: this.url,
+      subject,
+    });
+
+    // 2 Define EMAIL OPTIONS
+    const mailOptions = {
+      from: this.from,
+      to: this.to,
+      subject,
+      text: htmlToText.convert(html),
+      html,
+    };
+
+    //3 Create Transport and send email
+
+    try {
+      await this.newTransport().sendMail(mailOptions);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async sendWelcome() {
+    await this.send('welcome', 'Welcome to the Natours Family!');
+    console.log(`Welcome email has been sent to ${this.firstName}`);
+  }
 };
-
-module.exports = sendEmail;
