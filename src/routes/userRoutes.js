@@ -16,7 +16,12 @@ router.use(authController.protect); // Protect all the routes from this line bel
 router.patch('/updatePassword', authController.updatePassword);
 // User self routes
 router.get('/me', userController.getMe, userController.getUser);
-router.patch('/updateMe', userController.updateMe);
+router.patch(
+  '/updateMe',
+  userController.uploadUserPhoto,
+  userController.resizeUserPhoto,
+  userController.updateMe,
+);
 router.delete('/deleteMe', userController.deleteMe);
 
 // CRUD Routes: %100 REST format philosophy.
