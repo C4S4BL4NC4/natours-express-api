@@ -16,13 +16,13 @@ module.exports = class Email {
   newTransport() {
     if (process.env.NODE_ENV === 'production') {
       // Sendgrid
-      // return nodemailer.createTransport({
-      //   service: 'SendGrid',
-      //   auth: {
-      //     user: process.env.SENDGRID_USERNAME,
-      //     pass: process.env.SENDGRID_PASSWORD,
-      //   },
-      // });
+      return nodemailer.createTransport({
+        service: 'SendGrid',
+        auth: {
+          user: process.env.SENDGRID_USERNAME,
+          pass: process.env.SENDGRID_PASSWORD,
+        },
+      });
     }
 
     return nodemailer.createTransport({
@@ -55,15 +55,17 @@ module.exports = class Email {
 
     //3 Create Transport and send email
 
-    try {
-      await this.newTransport().sendMail(mailOptions);
-    } catch (err) {
-      console.log(err);
-    }
+    await this.newTransport().sendMail(mailOptions);
   }
 
   async sendWelcome() {
     await this.send('welcome', 'Welcome to the Natours Family!');
-    console.log(`Welcome email has been sent to ${this.firstName}`);
+  }
+
+  async sendPasswordReset() {
+    await this.send(
+      'passwordReset',
+      'Your password reset token (valid for 10 minutes)',
+    );
   }
 };
