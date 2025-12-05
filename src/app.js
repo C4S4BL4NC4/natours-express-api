@@ -15,6 +15,7 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
+const bookingRouter = require('./routes/bookingRoutes');
 
 const app = express();
 
@@ -80,7 +81,8 @@ app.use(
 app.use('/api/v1/tours', tourRouter); // Tour Router
 app.use('/api/v1/users', userRouter); // User Router
 app.use('/api/v1/reviews', reviewRouter); // Review Router
-app.use('/', viewRouter);
+app.use('/', viewRouter); // Rendered Router
+app.use('/api/v1/bookings', bookingRouter); // Booking Router
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {

@@ -4,7 +4,6 @@ import * as L from 'https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js';
 // location object from database
 
 export const displayMap = (locations) => {
-  console.log('bread getter');
   const map = L.map('map');
   const markerGroup = [];
   locations.forEach((el) => {
