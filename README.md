@@ -329,6 +329,9 @@ Free as in freedom—fork it, modify it, do whatever you want with it. It's made
 - [Unsplash](https://unsplash.com/) - For the beautiful banner image
 - [Postman](https://www.postman.com/)
 - [Obsidian](https://obsidian.md/) - For being a great note-taking tool. Check out [my notes](https://github.com/C4S4BL4NC4/natours-express-api/tree/main/obsidian/vaults) too!
+- [Stripe](https://stripe.com/) - For payment handling
+- [Mailtrap](https://mailtrap.io/) - For email sending (sandbox environment)
+- [SendGrid](https://sendgrid.com/en-us) - Real email sending _(NOTE: THIS PROJECT IS NOT READY FOR PRODUCTION AT ALL)_
 
 ---
 
