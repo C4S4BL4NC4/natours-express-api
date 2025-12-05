@@ -11,4 +11,18 @@ router.get(
   bookingController.getCheckoutSession,
 );
 
+// REST
+router.use(authController.restrictTo('admin', 'lead-guide'));
+
+router
+  .route('/')
+  .post(bookingController.createBooking)
+  .get(bookingController.getAllBookings);
+
+router
+  .route('/:id')
+  .get(bookingController.getBooking)
+  .patch(bookingController.updateBooking)
+  .delete(bookingController.deleteBooking);
+
 module.exports = router;

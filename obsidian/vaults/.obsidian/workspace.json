@@ -171,8 +171,9 @@
   },
   "active": "8c9ffb2c92bdf323",
   "lastOpenFiles": [
-    "nodeJS/Pug Templates/Pug Templates.md",
+    "Final Considerations.md",
     "nodeJS/Pug Templates/Writing pug.md",
+    "nodeJS/Pug Templates/Pug Templates.md",
     "Pug Templates.md",
     "nodeJS/Pug Templates",
     "123123.md",
@@ -215,7 +216,6 @@
     "nodeJS/MVC",
     "nodeJS/Node.js",
     "nodeJS/MongoDB",
-    "nodeJS/Node.js/TypeScript.md",
-    "nodeJS/Express/Middleware and Response Cycle.md"
+    "nodeJS/Node.js/TypeScript.md"
   ]
 }
